@@ -20,16 +20,37 @@ class Result {
      *  2. STRING_ARRAY note
      */
 
+//    public static void checkMagazine(List<String> magazine, List<String> note) {
+//        for(String s: note){
+//            if(!magazine.contains(s)){
+//                System.out.print("No");
+//                return;
+//            }else{
+//                magazine.remove(s);
+//            }
+//        }
+//        System.out.print("Yes");
+//    }
+
     public static void checkMagazine(List<String> magazine, List<String> note) {
+        // Write your code here
+        Map<String, Integer> map = new HashMap<>();
+        for(String s: magazine){
+            map.put(s, map.getOrDefault(s, 0)+1);
+        }
         for(String s: note){
-            if(!magazine.contains(s)){
+            if(!map.containsKey(s)){
                 System.out.print("No");
                 return;
             }else{
-                magazine.remove(s);
+                map.put(s, map.getOrDefault(s, 0)-1);
+                if(map.get(s)==0){
+                    map.remove(s);
+                }
             }
         }
         System.out.print("Yes");
+
     }
 
 }
