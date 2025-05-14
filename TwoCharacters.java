@@ -11,12 +11,12 @@ class Result {
      */
 
     public static int alternate(String s) {
-        Set<Character> uniqueChars = new HashSet<>();
+        Set<Character> set = new HashSet<>();
         for (char c : s.toCharArray()) {
-            uniqueChars.add(c);
+            set.add(c);
         }
 
-        List<Character> chars = new ArrayList<>(uniqueChars);
+        List<Character> chars = new ArrayList<>(set);
         int maxLength = 0;
 
         for (int i = 0; i < chars.size(); i++) {
@@ -31,7 +31,7 @@ class Result {
                     }
                 }
 
-                if (isAlternating(filtered.toString())) {
+                if (isAlternate(filtered.toString())) {
                     maxLength = Math.max(maxLength, filtered.length());
                 }
             }
@@ -40,7 +40,7 @@ class Result {
         return maxLength;
     }
 
-    private static boolean isAlternating(String s) {
+    private static boolean isAlternate(String s) {
         for (int i = 0; i < s.length() - 1; i++) {
             if (s.charAt(i) == s.charAt(i + 1)) {
                 return false;
